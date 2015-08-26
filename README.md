@@ -1,9 +1,15 @@
 # cli-loader
 
+### Install
+
+```sh
+npm install cli-loader [--save|--save-dev]
+```
+
 ### Example
 
 ```javascript
-var loader = require('./cli-loader')();
+var loader = require('cli-loader')();
 
 loader.start();
 
