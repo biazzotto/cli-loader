@@ -18,15 +18,15 @@ function loader(opts) {
 		spinner,
 		stream = process.stdout;
 
-	if (typeof opts === 'string') {
+	if (!opts) {
+		spinner = lib['basic'];
+	} else if (typeof opts === 'string') {
 		spinner = lib[opts] || lib['basic'];
-	} else if (typeof opts === 'object' && opts.frames) {
+	} else if (typeof opts === 'object') {
 		spinner = {
-			frames: opts.frames,
+			frames: opts.frames || lib['basic'].frames,
 			interval: opts.interval || 50
 		};
-	} else {
-		spinner = lib['basic'];
 	}
 
 	return {
@@ -49,6 +49,8 @@ function loader(opts) {
 	}
 
 	function stop() {
+		stream.clearLine();
+		stream.cursorTo(0);
 		clearInterval(id);
 	}
 }
