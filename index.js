@@ -3,13 +3,21 @@
 module.exports = loader;
 
 var lib = {
-	'basic': {
+	basic: {
 		frames: ['-', '\\', '|', '/'],
 		interval: 50
 	},
 	'basic-reverse': {
 		frames: ['-', '/', '|', '\\'],
 		interval: 50
+	},
+	stack: {
+		frames: ['▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'],
+		interval: 200
+	},
+	arrow: {
+		frames: ['>', '>>', '>>>', ''],
+		interval: 200
 	}
 };
 
@@ -19,12 +27,12 @@ function loader(opts) {
 		stream = process.stdout;
 
 	if (!opts) {
-		spinner = lib['basic'];
+		spinner = lib.basic;
 	} else if (typeof opts === 'string') {
-		spinner = lib[opts] || lib['basic'];
+		spinner = lib[opts] || lib.basic;
 	} else if (typeof opts === 'object') {
 		spinner = {
-			frames: opts.frames || lib['basic'].frames,
+			frames: opts.frames || lib.basic.frames,
 			interval: opts.interval || 50
 		};
 	}
