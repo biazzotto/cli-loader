@@ -28,7 +28,7 @@ Where `opts` can be a string or a object with `frames`(an array of strings) and 
 
 There are 4 built-in styled loaders:
 
-- `basic'(defualt)
+- `basic`(defualt)
 - `basic-reverse`
 - `stack`
 - `arrow`
